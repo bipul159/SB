@@ -199,7 +199,7 @@ def hasan(uid,pwx,tl):
                 
             
                 
-                res = requests.get(f"https://rajx.pythonanywhere.com/live/uid={cid}").text
+               
                 if 'LOCK' in res:
                     return 'LOCK'
                 else:
